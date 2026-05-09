@@ -248,6 +248,132 @@
   .source {
     font-size: 12px; color: var(--fg-4); margin-top: 12px;
   }
+
+  /* Executive summary */
+  .exec {
+    margin: 28px 0 8px;
+    padding: 28px 32px 24px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--info);
+    border-radius: 10px;
+  }
+  .exec .kicker {
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--info); margin-bottom: 6px;
+  }
+  .exec .ttl {
+    font-size: 18px; font-weight: 600;
+    margin: 0 0 14px; color: var(--fg);
+    letter-spacing: -0.005em;
+  }
+  .exec .lede {
+    font-family: var(--serif);
+    font-size: 21px; line-height: 1.45;
+    color: var(--fg); font-weight: 400;
+    margin: 0 0 26px;
+  }
+  .exec .lede em { font-style: normal; font-weight: 600; }
+  .exec h3 {
+    font-size: 13px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--fg-3); margin: 24px 0 10px;
+  }
+  .exec h3:first-of-type { margin-top: 8px; }
+
+  .key {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 16px 14px;
+    display: flex; flex-direction: column;
+  }
+  .key .num {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+    color: var(--info); margin-bottom: 8px;
+  }
+  .key .title {
+    font-weight: 600; font-size: 14.5px; line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .key .body {
+    font-size: 13.5px; line-height: 1.5; color: var(--fg-2);
+    margin: 0 0 12px;
+  }
+  .key .ev {
+    margin-top: auto; padding-top: 10px;
+    border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--fg-3);
+  }
+  .key .ev b {
+    color: var(--fg); font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .impact { font-size: 14px; line-height: 1.55; }
+  .impact ul {
+    margin: 0; padding-left: 18px;
+  }
+  .impact ul li { margin-bottom: 8px; color: var(--fg-2); }
+  .impact ul li:last-child { margin-bottom: 0; }
+  .impact ul li b { color: var(--fg); font-weight: 600; }
+  .impact h4 {
+    font-size: 13px; font-weight: 600;
+    color: var(--fg); margin: 0 0 10px;
+  }
+
+  .do {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .do .hd {
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--info); margin-bottom: 4px;
+  }
+  .do .sub {
+    font-size: 11px; color: var(--fg-4);
+    margin-bottom: 12px; font-style: italic;
+  }
+  .do ol {
+    margin: 0; padding-left: 20px;
+    font-size: 13.5px; line-height: 1.5;
+  }
+  .do ol li { margin-bottom: 9px; color: var(--fg-2); }
+  .do ol li:last-child { margin-bottom: 0; }
+  .do ol li b { color: var(--fg); font-weight: 600; }
+
+  .monday {
+    margin-top: 24px;
+    padding: 18px 22px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+  }
+  .monday .label {
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--warning); margin-bottom: 6px;
+  }
+  .monday .h {
+    font-size: 15px; font-weight: 600;
+    margin: 0 0 10px;
+  }
+  .monday ol {
+    margin: 0; padding-left: 20px;
+    font-size: 14px; line-height: 1.55;
+  }
+  .monday ol li { margin-bottom: 6px; color: var(--fg-2); }
+  .monday ol li b { color: var(--fg); font-weight: 600; }
+
+  @media print {
+    body { background: white; color: black; }
+    .exec { background: #f8f8f8; border-color: #ccc; }
+    main { padding: 24px; }
+  }
 </style>
 </head>
 <body>
@@ -263,35 +389,108 @@
     <p class="muted">Diagnosis of how customers use the New (drag-drop / multichannel) and Classic (template) email editors: where they start, the flow, where they end, friction points, back-and-forth, and errors. Trailing 90 days, ending most recent complete day.</p>
   </header>
 
-  <h2>Headline findings</h2>
+  <section class="exec">
+    <div class="kicker">Executive summary</div>
+    <p class="lede">
+      Mailchimp's two email editors fail customers in <em>opposite ways</em>: <em>Classic</em> is fast for experts but quietly abandons returning users at the design canvas; <em>New</em> has a cleaner overall funnel but loses most first-time creators before they ever reach the canvas, and is materially slower for everyone.
+    </p>
+
+    <h3>The 3 things that actually matter</h3>
+    <div class="grid" style="--cols: 3">
+      <div class="key">
+        <div class="num">01 — Reframe</div>
+        <div class="title">"10 million abandoned drafts" isn't real.</div>
+        <p class="body">Half of all drafts are users who walked away in under 2 minutes — exploration, accidents, fat-finger Create clicks. Build re-engagement for the real at-risk pool, not the headline number.</p>
+        <div class="ev">Real at-risk pool: <b>~830K</b>, not 10M · 50-56% are &lt;2-min abandons</div>
+      </div>
+      <div class="key">
+        <div class="num">02 — Wound</div>
+        <div class="title">Classic's design canvas is your single biggest UX wound.</div>
+        <p class="body">A user who picks a template and never alters it ships <b>80%</b> of the time. The moment they edit, completion collapses to <b>46%</b>. From blank: <b>30%</b>. The act of editing on Classic is what kills the campaign.</p>
+        <div class="ev"><b>9M+</b> altered-template attempts at half-completion (90d)</div>
+      </div>
+      <div class="key">
+        <div class="num">03 — Jackpot</div>
+        <div class="title">Returning users × Classic is your migration jackpot.</div>
+        <p class="body">The same cohort of <b>576K</b> returning users ships <b>8%</b> on Classic and <b>56%</b> on New. Same humans, same lifecycle stage — <b>7×</b> completion lift just by changing the editor.</p>
+        <div class="ev">Highest-ROI move in the dataset</div>
+      </div>
+    </div>
+
+    <div class="grid" style="--cols: 2; margin-top: 8px;">
+      <div class="impact">
+        <h3 style="margin-top: 24px;">What this means for customers</h3>
+        <ul>
+          <li><b>First-time creators on New</b> are bottlenecked at audience selection before they experience the editor's value. ~560K first-time creators per quarter try and never publish.</li>
+          <li><b>Returning users on Classic</b> are silently struggling — opening drafts, abandoning, never shipping. They look "active" in dashboards but get nothing done.</li>
+          <li><b>Power users on Classic</b> are well-served. They would notice migration as a regression (4.7× slower median time-to-send on New).</li>
+          <li><b>Compliance blocks fire 23× more on New.</b> When users hit them, their first impression of New becomes "the system rejected my work."</li>
+        </ul>
+      </div>
+      <div class="impact">
+        <h3 style="margin-top: 24px;">What this means for the business</h3>
+        <ul>
+          <li><b>Activation leak you can size:</b> 9M+ Classic edit-from-template attempts in 90 days at half-completion — the largest revenue-of-attempt loss in the dataset.</li>
+          <li><b>Migration is ROI-positive but cohort-specific</b> — not a single GA event. Returning users → guaranteed lift. First-timers → no migration needed (they default to New). Power users → risky without speed parity.</li>
+          <li><b>Ecommerce upside on New is real money:</b> Tier-3 conversion is 2.1× on New (2.91% vs 1.37%). Every commerce-account migration is a $ event.</li>
+          <li><b>AI feature adoption is 2.7% / 0.78%</b> — distribution problem, not value problem.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>What you should do next</h3>
+    <div class="grid" style="--cols: 3">
+      <div class="do">
+        <div class="hd">Product development</div>
+        <div class="sub">Ranked by leverage</div>
+        <ol>
+          <li><b>Fix New's audience step.</b> Default to last-used audience or move it inline with the canvas. 42% of New drafts die here. Goal: lift first-time completion 33% → &gt;50%.</li>
+          <li><b>Diagnose Classic's altered-template canvas collapse.</b> 9M+ attempts at half-completion. Suspects: autosave loss, render confusion, block validation. Goal: 46% → 80%.</li>
+          <li><b>New editor performance audit.</b> 4.7× time-to-send delta blocks power-user migration.</li>
+          <li><b>Compliance-block UX in New.</b> 23× block rate is a first-impression killer.</li>
+          <li><b>Replicate-flow parity in New.</b> Power users live on replicate → tweak → send.</li>
+        </ol>
+      </div>
+      <div class="do">
+        <div class="hd">Marketing / GTM</div>
+        <div class="sub">Ranked by safety</div>
+        <ol>
+          <li><b>Migrate returning users first.</b> Story: "Finish the campaign you started." 576K accounts. Highest-confidence campaign you can run.</li>
+          <li><b>Hold power-user migration messaging</b> until time-to-send parity. A "the new editor is slower" narrative is brand damage.</li>
+          <li><b>First-time creator onboarding overhaul.</b> "Blank canvas → first send in 10 min" guided flow.</li>
+          <li><b>AI feature discoverability campaign.</b> 2.7% adoption ≠ low value, = no one knows it exists.</li>
+          <li><b>Stalled-draft AM segment.</b> ≥5 stalled drafts in 30d is a silent-churn signal, especially for HVCs.</li>
+        </ol>
+      </div>
+      <div class="do">
+        <div class="hd">Instrumentation</div>
+        <div class="sub">The gate that unlocks everything</div>
+        <ol>
+          <li><b>Editor event log read access</b> (<code>rsg-events-pipeline-prod.ingest_v2.events</code>). Unlocks 11 of 27 brief questions.</li>
+          <li><b>Block-counter parity</b> in <code>emails_bulk</code> for New editor. One-week dataform fix.</li>
+          <li><b>AI / brand-kit exposure flag</b> in <code>bi_segment_dataform.users</code>.</li>
+          <li><b>Device class</b> on the campaign object (mobile-vs-desktop friction).</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="monday">
+      <div class="label">Monday morning</div>
+      <div class="h">If you can only do three things this quarter</div>
+      <ol>
+        <li><b>Fix New's audience step.</b> Biggest single first-mile leak; touches every cohort.</li>
+        <li><b>Run the migration play for returning users only.</b> Highest-confidence ROI; builds the muscle for bigger migration later.</li>
+        <li><b>Unblock the editor event log.</b> Without it, the next iteration of this analysis will be just as partial as this one.</li>
+      </ol>
+    </div>
+  </section>
+
+  <h2>By the numbers</h2>
   <div class="grid" style="--cols: 4">
     <div class="stat"><div class="v">25.9M</div><div class="l">Campaigns created (90d)</div></div>
     <div class="stat"><div class="v">1.45M</div><div class="l">Active creator accounts</div></div>
     <div class="stat success"><div class="v">14.83M</div><div class="l">Tier-1 real sends</div></div>
     <div class="stat warning"><div class="v">10.66M</div><div class="l">Drafts (never sent)</div></div>
-  </div>
-  <div class="grid" style="--cols: 3; margin-top: 12px;">
-    <div class="card">
-      <div class="hd">Time-to-send</div>
-      <div class="bd">
-        <p class="semibold" style="margin: 0 0 6px;">New editor is 4.7× slower at the median.</p>
-        <p class="small muted" style="margin: 0;">P50: Classic 97 min vs New 452 min. P95: Classic 7.9 d vs New 10.2 d.</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="hd">Draft outcome</div>
-      <div class="bd">
-        <p class="semibold" style="margin: 0 0 6px;">~50% of drafts are "considered rejection" — abandoned in &lt;2 min, no real content.</p>
-        <p class="small muted" style="margin: 0;">Classic 56% / New 49%. The "draft stall" problem is mostly empty starts, not stuck flows.</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="hd">Migration signal</div>
-      <div class="bd">
-        <p class="semibold" style="margin: 0 0 6px;">Returning (non-power) users complete on New 7× more often than on Classic.</p>
-        <p class="small muted" style="margin: 0;">Send rate: Classic 8.0% vs New 56.3% on the same lifecycle cohort.</p>
-      </div>
-    </div>
   </div>
 
   <div class="callout danger" style="margin-top: 24px;">
