@@ -1,49 +1,51 @@
-# Mailchimp Email Editor — Product Usage Assessment
+# Mailchimp Email Editor Migration Briefing
 
-Diagnostic report on how customers use Mailchimp's two email editors:
-- **New** (drag-drop, multichannel) — `content_type='multichannel'`
-- **Classic** (template-based) — `content_type='template'`
+Executive briefing on the **NEA → NUNI** email editor migration: where we are, why it has stalled, what it has cost us, and how to finish without losing the HVC base.
 
-**Live dashboard:** https://deepakp1308.github.io/mailchimp-email-editor-analysis/
+**Live briefing:** https://deepakp1308.github.io/mailchimp-email-editor-analysis/
 
-## Scope
+## What's in the briefing
 
-Trailing 90 days of campaign-object data from `mc-business-intelligence.bi_reporting.emails_bulk` (~25M campaigns, 1.45M creator accounts).
+1. **Executive Summary** — 8 top metrics, 5 things a senior exec must take away, 3 decision asks
+2. **Situation** — current editor distribution, migration trend over 24 months
+3. **Complication** — the 4 things that change the calculus (HVC inversion, CSAT decline, 225K reverters, editor-cited churn)
+4. **Key Question** — how to close $565M ARR migration without losing the customers we can't afford to lose
+5. **Recommendation** — 3-phase, parity-gated migration playbook with cumulative ARR mitigation
+6. **Decision Asks** — 5 specific items with owner and "why now"
+7. **Appendix (12 sections)** — methodology, geo/plan/ICP breakdowns, migration trend tables, migrator vs stayer profiles, stayer themes with verbatim VOC, top NUNI complaint topics, editor-cited churn deep dive (annualized), HVC stayer characteristics, sentiment trend, migration outcome breakdown, phase-mitigation calculator, Slack VOC stats
 
-Per the briefing, New and Classic are reported separately — funnel and microstep metrics are **not** pooled.
+## Headline numbers
 
-## What's in the report
+| Metric | Value |
+|---|---|
+| NUNI adoption | 62.5% (1.97M users) |
+| Remaining NEA paid base | $565M ARR ($47.1M MRR × 12) |
+| HVC ARR concentration on NEA | $281M ARR (38,145 users) |
+| CES delta (NUNI vs NEA) | -0.10 (3.90 vs 4.00) |
+| Reverters (tried NUNI → went back) | 225,784 |
+| Editor-cited churn ARR loss to date | $1.32M (conservative floor) |
+| ARR mitigated by Phase 1 | $60M |
+| Cumulative ARR mitigated by Phase 2 | $182M |
+| ARR protected via Phase 3 hybrid | $281M |
 
-1. Headline scorecard (3 stats + 3 finding cards)
-2. Data validation (brief §4 prerequisite)
-3. Population sizing (lifecycle cohorts × editor)
-4. Send-tier funnel A2 (Tier 0 → Tier 3 per editor)
-5. Where drafts get stuck — wizard-step distribution (A4 proxy)
-6. Draft-state cohort A6 (considered-rejection / in-progress / stalled / cold)
-7. Time-to-send distribution A8 (P50/P75/P90/P95 per editor)
-8. Back-and-forth signals (test sends per published campaign)
-9. Template-library health A14 (the Classic alter-template anomaly)
-10. Lifecycle × editor delta A7 (the migration win)
-11. Errors and compliance blocks A5 (partial)
-12. AI assist usage A12 (directional only)
-13. New vs Classic delta summary
-14. Decision-lens recommendations (L1–L4)
-15. Answers to all 27 priority questions from brief §11
-16. Instrumentation gap report (brief §10.8)
-17. Closing narrative
-18. SQL appendix
+## Data sources
 
-## Data gaps acknowledged
+- `mc-business-intelligence.bi_marketing.lcm_marketing_account_base` — current state, plan, MRR, country
+- `mc-business-intelligence.bi_activities.users_activities` — editor preference events (24mo)
+- `mc-business-intelligence.bi_activities.email_campaign_send_activities` — send activity
+- `mc-business-intelligence.bi_product.sent_email_activities` — feature adoption
+- `mc-business-intelligence.bi_aggregate.mbr_monthly` — gross churn baselines
+- `mc-business-intelligence.mailchimp.users_packages` + `mailchimp.orders` — historical plan + MRR-at-churn
+- `mc-business-intelligence.qualtrics.survey_responses` — Exit Survey, CES Edit-an-Email, Nuni Feedback Badge
+- Slack: `#hvc_feedback`, `#mc-hvc-escalations`, `#mc-reporting-analytics-feedback` (1,551 editor-related VOCs)
 
-The briefing requires editor event-log analysis (microstep funnel, path mining, friction-score, undo / autosave / render telemetry, support-ticket joins). Those sources were not accessible:
+## Caveats
 
-- `rsg-events-pipeline-prod.ingest_v2.events` — 403 access denied
-- Client telemetry stream — no table located
-- Support tickets tagged "editor" — not located
-- Block counters in `emails_bulk` are not populated for the New editor (real instrumentation bug)
-
-Per the brief: "If data gaps prevent any of these, stop and produce the instrumentation gap report instead of guessing." That report is §15.
+- Editor-cited churn is the **conservative explicit floor** from the structured Exit Survey signal. True editor-attributable churn is 2–5× higher (signal hidden in "Other" / "Difficult to use" / "Performance issues" primary-reason paths).
+- ARR figures are MRR × 12 (annualized run-rate); they do not model winback or future expansion.
+- Phase user-count and MRR estimates assume current state holds; revisit quarterly as Phase 1 default-flip shifts the population.
 
 ## File layout
 
-- `index.html` — single-file standalone dashboard. No build, no JS dependencies. Renders with system fonts. Auto-adapts to dark mode.
+- `index.html` — single-file standalone briefing. No build, no JS dependencies. Auto light/dark mode.
+- `README.md` — this file.
