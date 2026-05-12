@@ -322,6 +322,102 @@
   body.view-paid .view-banner.combined { display: none; }
   body.view-combined .view-banner.paid { display: none; }
 
+  /* Issue + Solution card styling */
+  .issue-card {
+    border: 1px solid var(--border); border-radius: 10px;
+    background: var(--bg-card); margin: 18px 0; overflow: hidden;
+  }
+  .issue-card .ic-hd {
+    padding: 12px 16px; display: flex; align-items: center; gap: 12px;
+    border-bottom: 1px solid var(--border); background: var(--bg-alt);
+    flex-wrap: wrap;
+  }
+  .issue-card .ic-num {
+    font-size: 20px; font-weight: 700; color: var(--fg-4);
+    font-variant-numeric: tabular-nums; min-width: 28px; text-align: right;
+  }
+  .issue-card .ic-hd h3 { margin: 0; flex: 1; font-size: 16px; min-width: 200px; }
+  .issue-card.crit .ic-hd { background: var(--danger-bg); border-bottom-color: var(--danger); }
+  .issue-card.high .ic-hd { background: var(--warning-bg); border-bottom-color: var(--warning); }
+  .issue-card.med  .ic-hd { background: var(--info-bg);    border-bottom-color: var(--info); }
+  .issue-card .ic-bd { padding: 14px 16px; }
+  .issue-card .ic-detail { margin: 0 0 14px; color: var(--fg-2); font-size: 14px; line-height: 1.55; }
+  .issue-card .ic-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;
+  }
+  @media (max-width: 720px) { .issue-card .ic-grid { grid-template-columns: 1fr; } }
+  .issue-card .ic-section {
+    padding: 10px 12px; background: var(--bg-soft); border-radius: 8px;
+  }
+  .issue-card .ic-section h4 {
+    margin: 0 0 4px; font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.06em; font-weight: 700; color: var(--fg-3);
+  }
+  .issue-card .ic-section p, .issue-card .ic-section ul {
+    margin: 0; font-size: 13px; color: var(--fg); line-height: 1.5;
+  }
+  .issue-card .ic-section ul { padding-left: 16px; }
+  .issue-card .ic-section li { margin: 2px 0; }
+  .issue-card .ic-section.jtbd h4    { color: var(--info); }
+  .issue-card .ic-section.barrier h4 { color: var(--danger); }
+  .issue-card .ic-section.solution h4{ color: var(--warning); }
+  .issue-card .ic-section.success h4 { color: var(--success); }
+
+  .from-to {
+    display: grid; grid-template-columns: 1fr 24px 1fr; gap: 8px;
+    align-items: stretch; margin-top: 12px;
+  }
+  @media (max-width: 720px) {
+    .from-to { grid-template-columns: 1fr; }
+    .from-to .ft-arrow { display: none; }
+  }
+  .from-to .ft-state {
+    border-radius: 8px; padding: 12px 14px; font-size: 13px;
+    border: 1px solid var(--border);
+  }
+  .from-to .ft-state.today {
+    background: var(--danger-bg); border-color: var(--danger);
+  }
+  .from-to .ft-state.after {
+    background: var(--success-bg); border-color: var(--success);
+  }
+  .from-to .ft-state h5 {
+    margin: 0 0 6px; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700;
+  }
+  .from-to .ft-state.today h5 { color: var(--danger); }
+  .from-to .ft-state.after h5 { color: var(--success); }
+  .from-to .ft-state ul { margin: 0; padding-left: 16px; }
+  .from-to .ft-state li { margin: 3px 0; font-size: 13px; }
+  .from-to .ft-arrow {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; color: var(--fg-3); font-weight: 600;
+  }
+
+  .issue-quote {
+    border-left: 3px solid var(--warning); padding: 8px 12px;
+    background: var(--bg-soft); margin: 8px 0 0;
+    font-style: italic; color: var(--fg-2);
+    font-size: 13px; border-radius: 0 6px 6px 0;
+  }
+
+  .issue-pill {
+    display: inline-flex; align-items: center; font-size: 11px;
+    padding: 2px 8px; border-radius: 999px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .issue-pill.crit { background: var(--danger);  color: #fff; }
+  .issue-pill.high { background: var(--warning); color: #fff; }
+  .issue-pill.med  { background: var(--info);    color: #fff; }
+
+  .phase-divider {
+    margin: 32px 0 16px; padding: 12px 16px;
+    background: var(--bg-soft); border-radius: 8px;
+    border-left: 4px solid var(--info);
+  }
+  .phase-divider h3 { margin: 0 0 4px; font-size: 16px; }
+  .phase-divider p { margin: 0; font-size: 13px; color: var(--fg-3); }
+
   @media print {
     .tab-bar { position: static; }
     main { padding: 24px; }
@@ -376,6 +472,7 @@
   <a href="#question">3. Key Question</a>
   <a href="#recommendation">4. Recommendation</a>
   <a href="#asks">5. Decision Asks</a>
+  <a href="#issues">Issues &amp; Solutions Detail</a>
   <a href="#appendix">Appendix</a>
 </nav>
 
@@ -999,6 +1096,1021 @@
   </table>
 
   <p style="margin-top:14px;" class="small muted">Answer-by date proposed: <span class="semibold">end of FY27 Q1</span>, so Phase 1 prerequisites can ship in Q2 and the playbook can begin executing in early Q3.</p>
+</section>
+
+<hr style="margin: 48px 0;" />
+
+<!-- =========================================================== -->
+<!-- ISSUES & SOLUTIONS DETAIL                                    -->
+<!-- =========================================================== -->
+<section id="issues">
+  <h2 style="font-size:24px;">Issues &amp; Solutions Detail</h2>
+  <p>
+    Every parity gap and defect named in the recommendation, expanded in detail. For each: <span class="semibold">what is the issue</span>, <span class="semibold">what job the customer is trying to do</span>, <span class="semibold">how the issue blocks them</span> (with verbatim VOC), <span class="semibold">what the solution looks like</span>, <span class="semibold">what success looks like for the customer</span>, and a <span class="semibold">From → To visual</span> showing today's broken state vs the target state.
+  </p>
+  <p class="small muted">
+    14 issues organized by recommendation phase. Severity = the cost of <em>not</em> shipping it before the corresponding migration phase begins.
+  </p>
+
+  <!-- ====== PHASE 1 ====== -->
+  <div class="phase-divider">
+    <h3>Phase 1 prerequisites — defect tier (ship in Q1)</h3>
+    <p>These are ship-blockers for the default-flip on Free + low-paid. Without them, we recreate the late-2024 bleed.</p>
+  </div>
+
+  <!-- ISSUE 1 -->
+  <div class="issue-card crit">
+    <div class="ic-hd">
+      <span class="ic-num">01</span>
+      <h3>Save / version-history reliability</h3>
+      <span class="issue-pill crit">Critical</span>
+      <span class="pill">Phase 1</span>
+      <span class="pill">357 negative VOCs</span>
+    </div>
+    <div class="ic-bd">
+      <p class="ic-detail">
+        Customers report their email work has been deleted, reverted to old versions, or that template columns and sections are missing after save. There is no way to access previous saved versions of a campaign. When one user saves, another collaborator sees the unedited version. The Defects topic in our Qualtrics badge has <span class="semibold">357 negative responses</span> — the largest single defect class.
+      </p>
+      <div class="ic-grid">
+        <div class="ic-section jtbd">
+          <h4>Customer JTBD</h4>
+          <p>"I want to draft an email campaign over multiple sessions, with my team, and trust that my work is saved and recoverable if anything goes wrong."</p>
+        </div>
+        <div class="ic-section barrier">
+          <h4>How it blocks them</h4>
+          <p>Users lose confidence to use NUNI for important campaigns. They abandon mid-edit, escalate to support, take screenshots as backup, or revert to NEA where they trust the save behavior.</p>
+          <blockquote class="issue-quote">"My work has been deleted, it's gone back to an old version of this email, my template columns and sections are missing, I can't edit it properly. This is really poor."</blockquote>
+        </div>
+        <div class="ic-section solution">
+          <h4>Solution</h4>
+          <ul>
+            <li>True version history with auto-save + restore points (every 30s + manual save points)</li>
+            <li>Persistent auto-save indicator visible at all times</li>
+            <li>"Restore previous version" UI in campaign menu</li>
+            <li>Conflict resolution / queue when multiple users edit</li>
+            <li>Defect-class fixes for the underlying state-management bugs</li>
+          </ul>
+        </div>
+        <div class="ic-section success">
+          <h4>Success state</h4>
+          <p>Customer iterates on a campaign over days/weeks with confidence. Can roll back to any prior version in one click. Browser crash = no lost work. Team collaboration works without overwrites.</p>
+        </div>
+      </div>
+      <div class="from-to">
+        <div class="ft-state today">
+          <h5>Today (broken)</h5>
+          <ul>
+            <li>Save = hope</li>
+            <li>Lost work = panic + screenshots</li>
+            <li>Multi-user edits = silent overwrites</li>
+            <li>No version history</li>
+          </ul>
+        </div>
+        <div class="ft-arrow">→</div>
+        <div class="ft-state after">
+          <h5>After (fixed)</h5>
+          <ul>
+            <li>Save = guaranteed, every 30s</li>
+            <li>Prior versions = 1-click restore</li>
+            <li>Multi-user = merge or queue</li>
+            <li>Browser crash = zero data loss</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ISSUE 2 -->
+  <div class="issue-card crit">
+    <div class="ic-hd">
+      <span class="ic-num">02</span>
+      <h3>Preview-test reliability</h3>
+      <span class="issue-pill crit">Critical</span>
+      <span class="pill">Phase 1</span>
+      <span class="pill">370 negative VOCs</span>
+    </div>
+    <div class="ic-bd">
+      <p class="ic-detail">
+        Test sends fail to arrive for users who used to receive them reliably. The in-editor preview doesn't match the rendered email when sent. Mobile preview doesn't match Gmail mobile rendering. This is a confidence-killer for any pre-send QA workflow — and it's the second-largest defect class with <span class="semibold">370 negative responses</span> on the Preview &amp; Test topic.
+      </p>
+      <div class="ic-grid">
+        <div class="ic-section jtbd">
+          <h4>Customer JTBD</h4>
+          <p>"Before I send to my list, I want to confidently verify the email looks correct on desktop, mobile, and across major email clients."</p>
+        </div>
+        <div class="ic-section barrier">
+          <h4>How it blocks them</h4>
+          <p>Customers can't trust the preview, so they either skip the test send (risking a bad campaign hitting production), or do elaborate workarounds (sending to multiple personal addresses across providers, screenshotting). Some campaigns now go out without preview because the workflow is broken.</p>
+          <blockquote class="issue-quote">"The 'Send test' email function in the email campaign builder is NOT functioning for me. I have attempted to send test emails to multiple emails and none have come through. Previously this function was working fine."</blockquote>
+        </div>
+        <div class="ic-section solution">
+          <h4>Solution</h4>
+          <ul>
+            <li>Fix test-send delivery reliability (likely throttling / queue bug)</li>
+            <li>Render in-editor preview using the same engine that renders the sent email — eliminate the gap</li>
+            <li>Mobile preview powered by actual Gmail/iOS/Outlook rendering signals (not generic mobile CSS)</li>
+            <li>"Inbox preview" parity — multiple clients in one view</li>
+          </ul>
+        </div>
+        <div class="ic-section success">
+          <h4>Success state</h4>
+          <p>Test sends arrive within 30 seconds. Preview pixel-matches the sent email. Mobile preview looks identical to Gmail mobile rendering. Pre-send QA takes 2 minutes instead of 20.</p>
+        </div>
+      </div>
+      <div class="from-to">
+        <div class="ft-state today">
+          <h5>Today (broken)</h5>
+          <ul>
+            <li>Test send: maybe arrives, maybe not</li>
+            <li>Preview ≠ what gets sent</li>
+            <li>Mobile preview ≠ Gmail mobile</li>
+            <li>Workaround: send to 4 personal accounts</li>
+          </ul>
+        </div>
+        <div class="ft-arrow">→</div>
+        <div class="ft-state after">
+          <h5>After (fixed)</h5>
+          <ul>
+            <li>Test send guaranteed in &lt;30s</li>
+            <li>Preview = sent (same render engine)</li>
+            <li>Mobile preview = real Gmail render</li>
+            <li>Inbox preview shows all major clients</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ISSUE 3 -->
+  <div class="issue-card crit">
+    <div class="ic-hd">
+      <span class="ic-num">03</span>
+      <h3>Text editing reliability — cursor, paste, line spacing</h3>
+      <span class="issue-pill crit">Critical</span>
+      <span class="pill">Phase 1</span>
+      <span class="pill">1,010 negative VOCs</span>
+    </div>
+    <div class="ic-bd">
+      <p class="ic-detail">
+        Text editing is the highest-volume complaint topic (<span class="semibold">1,010 negative responses</span>). Cursor jumps, pasted text loses formatting or pastes with wrong formatting, line spacing is inconsistent, fonts revert. The new builder doesn't match formatting when pasting simple Arial 12 plain text — even after clearing formatting.
+      </p>
+      <div class="ic-grid">
+        <div class="ic-section jtbd">
+          <h4>Customer JTBD</h4>
+          <p>"I want to write or paste my email copy and have it stay exactly how I formatted it — typing should feel like a normal text editor."</p>
+        </div>
+        <div class="ic-section barrier">
+          <h4>How it blocks them</h4>
+          <p>Every paste from Word/Docs/Notes becomes a 5-minute formatting-fix exercise. Cursor jumps cause typos and erroneous deletes. Long-form newsletter writers find the editor unusable.</p>
+          <blockquote class="issue-quote">"I have used the legacy builder for years. The new builder doesn't match the formatting when I paste my very simple Arial 12 plain text. Even if I clear formatting, it pastes wrong."</blockquote>
+        </div>
+        <div class="ic-section solution">
+          <h4>Solution</h4>
+          <ul>
+            <li>Fix cursor positioning bugs (regression test against common selection patterns)</li>
+            <li>Implement a "paste as plain text" default + smart-paste options</li>
+            <li>Preserve line spacing across paste / save / reload</li>
+            <li>Stable font inheritance from brand kit</li>
+          </ul>
+        </div>
+        <div class="ic-section success">
+          <h4>Success state</h4>
+          <p>Customer pastes from Google Docs and the email looks like the doc. Types continuously without cursor jumps. Line spacing stays consistent. Doesn't think about the editor — thinks about the message.</p>
+        </div>
+      </div>
+      <div class="from-to">
+        <div class="ft-state today">
+          <h5>Today (broken)</h5>
+          <ul>
+            <li>Cursor jumps mid-typing</li>
+            <li>Paste = formatting chaos</li>
+            <li>Line spacing inconsistent</li>
+            <li>Fonts revert to defaults silently</li>
+          </ul>
+        </div>
+        <div class="ft-arrow">→</div>
+        <div class="ft-state after">
+          <h5>After (fixed)</h5>
+          <ul>
+            <li>Cursor stable through formatting</li>
+            <li>Paste preserves intent (or strips cleanly)</li>
+            <li>Line spacing locked once set</li>
+            <li>Fonts inherit from brand kit</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ISSUE 4 -->
+  <div class="issue-card crit">
+    <div class="ic-hd">
+      <span class="ic-num">04</span>
+      <h3>Mobile preview accuracy</h3>
+      <span class="issue-pill crit">Critical</span>
+      <span class="pill">Phase 1</span>
+      <span class="pill">354 negative VOCs</span>
+    </div>
+    <div class="ic-bd">
+      <p class="ic-detail">
+        Mobile preview in NUNI doesn't match how the email renders on Gmail mobile, iOS Mail, or Outlook mobile. Customers without developer support can't optimize for mobile — images appear too large in mobile view of campaigns. <span class="semibold">354 negative responses</span> on the Mobile topic; layout breakage on Gmail desktop is the most-named symptom.
+      </p>
+      <div class="ic-grid">
+        <div class="ic-section jtbd">
+          <h4>Customer JTBD</h4>
+          <p>"I want to design once and have it look right on every device — without writing media queries or stacking by hand."</p>
+        </div>
+        <div class="ic-section barrier">
+          <h4>How it blocks them</h4>
+          <p>B2C and ecomm customers (mobile-heavy audiences) produce campaigns that look fine in NUNI preview but break in real Gmail mobile. SMB owners without developers can't fix it.</p>
+          <blockquote class="issue-quote">"Would be really useful to have more mobile optimisation options for emails without the need for coding. Images appear too large in mobile view of our campaigns and we don't have a developer."</blockquote>
+        </div>
+        <div class="ic-section solution">
+          <h4>Solution</h4>
+          <ul>
+            <li>Mobile preview powered by actual Gmail/iOS/Outlook rendering signals</li>
+            <li>Mobile-specific CSS controls (image % sizing, column stacking behavior)</li>
+            <li>"Preview as Gmail mobile" button on every block</li>
+            <li>Auto-fit images for mobile (with override)</li>
+          </ul>
+        </div>
+        <div class="ic-section success">
+          <h4>Success state</h4>
+          <p>Customer composes on desktop, knows the mobile render will match. Subscribers on mobile see properly-sized images and stacked columns. No code required.</p>
+        </div>
+      </div>
+      <div class="from-to">
+        <div class="ft-state today">
+          <h5>Today (broken)</h5>
+          <ul>
+            <li>Mobile preview ≠ Gmail mobile</li>
+            <li>Images render oversized on phones</li>
+            <li>Mobile-specific controls require code</li>
+          </ul>
+        </div>
+        <div class="ft-arrow">→</div>
+        <div class="ft-state after">
+          <h5>After (fixed)</h5>
+          <ul>
+            <li>Mobile preview = real Gmail/iOS</li>
+            <li>Images auto-fit per device</li>
+            <li>Mobile controls native, no code</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 2 ====== -->
+  <div class="phase-divider" style="border-left-color: var(--warning);">
+    <h3>Phase 2 prerequisites — structural parity (ship months 3-9)</h3>
+    <p>These unlock the concierge nudge for paid power-users + non-Legacy HVC. Without them, $122M ARR Phase 2 cohort cannot move safely.</p>
+  </div>
+
+  <!-- ISSUE 5 -->
+  <div class="issue-card high">
+    <div class="ic-hd">
+      <span class="ic-num">05</span>
+      <h3>Image controls &amp; side-by-side sizing</h3>
+      <span class="issue-pill high">High</span>
+      <span class="pill">Phase 2</span>
+      <span class="pill">770 negative VOCs · $9,376 P0 escalation</span>
+    </div>
+    <div class="ic-bd">
+      <p class="ic-detail">
+        NUNI lost the "this image is way too big" warning that NEA had. Cannot make side-by-side images the same size — what was a single click in NEA now requires manual pixel-level adjustments per image. Image rotation produces unexpected crops. Replicating a campaign from NEA to NUNI adds white gaps between images that don't show in preview but appear in the sent email — this is a $9,376 MRR P0 escalation.
+      </p>
+      <div class="ic-grid">
+        <div class="ic-section jtbd">
+          <h4>Customer JTBD</h4>
+          <p>"I want to lay out a multi-image email (product grid, gallery, side-by-side comparison) without doing math, and have it render the same way in inbox as it does in preview."</p>
+        </div>
+        <div class="ic-section barrier">
+          <h4>How it blocks them</h4>
+          <p>Visual-heavy ecommerce + agency users can't produce the layouts they need without external image-editing tools. The replication white-gap defect actively damages campaigns that were perfect in NEA.</p>
+          <blockquote class="issue-quote">"How can I make side-by-side images be the same size? That was easy in the legacy builder, but I can't find that in the new editor."</blockquote>
+        </div>
+        <div class="ic-section solution">
+          <h4>Solution</h4>
+          <ul>
+            <li>Side-by-side equal-size auto-fit (default ON for image-row blocks)</li>
+            <li>Restore the "image too large" warning at upload time</li>
+            <li>Pixel-level positioning controls in image block panel</li>
+            <li>Fix the NEA→NUNI replication white-gap defect</li>
+            <li>Image rotation that preserves bounding box</li>
+          </ul>
+        </div>
+        <div class="ic-section success">
+          <h4>Success state</h4>
+          <p>Customer drops 3 product images into a row — they auto-balance. Receives a clear warning before uploading a 5MB image. Replicated campaigns from NEA render identically on send.</p>
+        </div>
+      </div>
+      <div class="from-to">
+        <div class="ft-state today">
+          <h5>Today (broken)</h5>
+          <ul>
+            <li>Side-by-side = manual pixel math</li>
+            <li>Replication adds invisible white gaps</li>
+            <li>No size warning — 5MB images go through</li>
+            <li>Rotation crops unexpectedly</li>
+          </ul>
+        </div>
+        <div class="ft-arrow">→</div>
+        <div class="ft-state after">
+          <h5>After (fixed)</h5>
+          <ul>
+            <li>Side-by-side auto-balance</li>
+            <li>Replication preserves layout 1:1</li>
+            <li>Size warning at upload</li>
+            <li>Rotation respects bounding box</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ISSUE 6 -->
+  <div class="issue-card high">
+    <div class="ic-hd">
+      <span class="ic-num">06</span>
+      <h3>Brand kit / font palette / color palette restoration</h3>
+      <span class="issue-pill high">High</span>
+      <span class="pill">Phase 2</span>
+      <span class="pill">131 v.neg Templates + 91 v.neg Fonts</span>
+    </div>
+    <div class="ic-bd">
+      <p class="ic-detail">
+        NUNI restricts users to a smaller font palette than NEA had. Brand fonts uploaded to brand kit (e.g., Poppins, Merriweather Sans, DIN 2014) aren't recognized in the editor. Colors are limited to whatever was used in a specific email being used as a template — not the full palette. Saved templates from NEA aren't available in NUNI, leaving years of saved templates stranded.
+      </p>
+      <div class="ic-grid">
+        <div class="ic-section jtbd">
+          <h4>Customer JTBD</h4>
+          <p>"I want my brand to look consistent across every email — same fonts, same colors, same templates as the rest of my marketing."</p>
+        </div>
+        <div class="ic-section barrier">
+          <h4>How it blocks them</h4>
+          <p>Brand directors can't enforce brand consistency. Customers using non-default fonts are stuck. Templates lost = weeks of redesign work to recreate. New brand director can't inherit the brand stack without rebuilding.</p>
+          <blockquote class="issue-quote">"The font we've been using (Merriweather Sans) for YEARS is no longer available on the Classic Builder. But switching to the New Builder, NONE of our saved templates are available anymore. We have SOOOOO many templates we've worked so hard on perfecting."</blockquote>
+        </div>
+        <div class="ic-section solution">
+          <h4>Solution</h4>
+          <ul>
+            <li>Restore full color palette + custom palette persistence</li>
+            <li>Brand-kit font upload that actually loads in the editor</li>
+            <li>NEA → NUNI template auto-port tool (run once per account, all saved templates)</li>
+            <li>Full font picker: web-safe + Google fonts + custom uploads</li>
+            <li>Brand-kit-as-source-of-truth: changing brand kit retro-applies to email defaults</li>
+          </ul>
+        </div>
+        <div class="ic-section success">
+          <h4>Success state</h4>
+          <p>Customer's brand kit is the single source of truth. Every NUNI email opens with their brand fonts/colors. All NEA templates ported and selectable. New team members inherit the brand stack on day one.</p>
+        </div>
+      </div>
+      <div class="from-to">
+        <div class="ft-state today">
+          <h5>Today (broken)</h5>
+          <ul>
+            <li>Brand kit ignored by editor</li>
+            <li>Custom fonts not recognized</li>
+            <li>Colors limited to last template's palette</li>
+            <li>NEA templates stranded</li>
+          </ul>
+        </div>
+        <div class="ft-arrow">→</div>
+        <div class="ft-state after">
+          <h5>After (fixed)</h5>
+          <ul>
+            <li>Brand kit = email defaults</li>
+            <li>Custom fonts + Google fonts available</li>
+            <li>Full color palette persistent</li>
+            <li>NEA templates auto-ported</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ISSUE 7 -->
+  <div class="issue-card high">
+    <div class="ic-hd">
+      <span class="ic-num">07</span>
+      <h3>Drag/drop precision &amp; layout positioning</h3>
+      <span class="issue-pill high">High</span>
+      <span class="pill">Phase 2</span>
+      <span class="pill">224 neg Layouts + 314 neg Sections</span>
+    </div>
+    <div class="ic-bd">
+      <p class="ic-detail">
+        Pixel-level positioning in NUNI is "wonky." Dragging a text box to another column requires NASA-level precision. Templates and other text fields jump around during drag. Buttons that were centered once suddenly all align left and can't be repositioned.
+      </p>
+      <div class="ic-grid">
+        <div class="ic-section jtbd">
+          <h4>Customer JTBD</h4>
+          <p>"I want to compose a layout exactly like I have in mind — drag elements where I want them, and have them stay there."</p>
+        </div>
+        <div class="ic-section barrier">
+          <h4>How it blocks them</h4>
+          <p>Power users abandon NUNI mid-edit. Layouts take 3-5× longer than NEA. The precision deficit is one of the top stayer reasons in our HVC interviews.</p>
+          <blockquote class="issue-quote">"Regarding the new drag/drop template — very wonky. Dragging a text box to another column requires NASA-level precision as the template and other text fields jump around. Not nearly as simple as the legacy template."</blockquote>
+        </div>
+        <div class="ic-section solution">
+          <h4>Solution</h4>
+          <ul>
+            <li>Snap-to-grid + alignment guides during drag</li>
+            <li>Pixel-precise drag with clear drop targets</li>
+            <li>Lock element position once placed (don't auto-rearrange)</li>
+            <li>Undo for accidental moves</li>
+          </ul>
+        </div>
+        <div class="ic-section success">
+          <h4>Success state</h4>
+          <p>Drag = drop where you mean it. Layout takes the same time as NEA or less. Buttons stay where placed.</p>
+        </div>
+      </div>
+      <div class="from-to">
+        <div class="ft-state today">
+          <h5>Today (broken)</h5>
+          <ul>
+            <li>Drag = NASA precision required</li>
+            <li>Other elements jump around</li>
+            <li>Buttons re-align without permission</li>
+            <li>Undo doesn't work for moves</li>
+          </ul>
+        </div>
+        <div class="ft-arrow">→</div>
+        <div class="ft-state after">
+          <h5>After (fixed)</h5>
+          <ul>
+            <li>Snap-to-grid + alignment guides</li>
+            <li>Layout stays put once placed</li>
+            <li>Buttons hold their alignment</li>
+            <li>Undo / redo works for all moves</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ISSUE 8 -->
+  <div class="issue-card high">
+    <div class="ic-hd">
+      <span class="ic-num">08</span>
+      <h3>A/B variate workflow for power users</h3>
+      <span class="issue-pill high">High</span>
+      <span class="pill">Phase 2</span>
+      <span class="pill">HVC NEA pattern: 28 children/parent</span>
+    </div>
+    <div class="ic-bd">
+      <p class="ic-detail">
+        HVC NEA users create <span class="semibold">28 children per parent variate campaign on average</span>. NUNI's A/B workflow doesn't support this volume cleanly. Reaching content of a sent multivariate-test campaign takes 5-6 clicks (replicate, save as template, delete, open template) vs 1 click for a simple campaign.
+      </p>
+      <div class="ic-grid">
+        <div class="ic-section jtbd">
+          <h4>Customer JTBD</h4>
+          <p>"I want to run multivariate tests with many variants (subject lines, content blocks, sender names, send times) at once and see results in one place."</p>
+        </div>
+        <div class="ic-section barrier">
+          <h4>How it blocks them</h4>
+          <p>HVC marketers running serious experimentation can't replicate their NEA cadence in NUNI. They stay on NEA for variate even if they use NUNI for one-shot campaigns.</p>
+          <blockquote class="issue-quote">"Make it as easy to get to the content of previously-sent multivariate-test campaigns as it is to get to the content of previously sent straightforward campaigns. It is a one-click to access content of a [Sent] simple campaign, while for multivariate-test campaigns it is a 5 to 6 click process."</blockquote>
+        </div>
+        <div class="ic-section solution">
+          <h4>Solution</h4>
+          <ul>
+            <li>Native multivariate UI supporting 30+ children</li>
+            <li>One-click access to variate campaign content (parity with simple campaigns)</li>
+            <li>Variate results dashboard showing winner + lift across all dimensions</li>
+            <li>Easier subject line + preview text variant entry (bulk paste)</li>
+          </ul>
+        </div>
+        <div class="ic-section success">
+          <h4>Success state</h4>
+          <p>HVC marketer runs a 16-variant test (4 subject lines × 4 send times) in 5 minutes. Reviews results in one screen. Promotes winner to remainder of audience in one click.</p>
+        </div>
+      </div>
+      <div class="from-to">
+        <div class="ft-state today">
+          <h5>Today (broken)</h5>
+          <ul>
+            <li>Variate UI breaks past ~5 children</li>
+            <li>5-6 clicks to view past variate content</li>
+            <li>Results scattered across screens</li>
+            <li>Bulk variant entry impossible</li>
+          </ul>
+        </div>
+        <div class="ft-arrow">→</div>
+        <div class="ft-state after">
+          <h5>After (fixed)</h5>
+          <ul>
+            <li>Native 30+ children support</li>
+            <li>1-click variate content access</li>
+            <li>Results dashboard, winner clear</li>
+            <li>Bulk paste for subject/preview variants</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ISSUE 9 -->
+  <div class="issue-card high">
+    <div class="ic-hd">
+      <span class="ic-num">09</span>
+      <h3>AI Creative Assistant restoration</h3>
+      <span class="issue-pill high">High</span>
+      <span class="pill">Phase 2</span>
+      <span class="pill">Highest very-neg ratio (1.45×)</span>
+    </div>
+    <div class="ic-bd">
+      <p class="ic-detail">
+        A premium AI Creative Assistant feature (banner generator, photo creative AI) was visibly removed or degraded in the NUNI transition. AI Features is the topic with the <span class="semibold">highest very-negative ratio (1.45×)</span> in our entire VOC dataset — users are not just complaining, they're escalating. Direct churn-threat language tied to this loss.
+      </p>
+      <div class="ic-grid">
+        <div class="ic-section jtbd">
+          <h4>Customer JTBD</h4>
+          <p>"I'm a non-designer — I want AI to help me create on-brand visual assets (banners, photos, headers) without needing Photoshop or a freelancer."</p>
+        </div>
+        <div class="ic-section barrier">
+          <h4>How it blocks them</h4>
+          <p>SMB and agency users used Creative Assistant to differentiate Mailchimp from competitors. With it gone, they're shopping other providers. Klaviyo and Brevo both invested in AI in 2025; this is competitive parity, not just a feature loss.</p>
+          <blockquote class="issue-quote">"Please bring back the AI creative photo feature? It was SO good and really set you apart from other email providers. And now it's gone. So sad about this and am thinking about moving providers."</blockquote>
+        </div>
+        <div class="ic-section solution">
+          <h4>Solution</h4>
+          <ul>
+            <li>Restore the Creative Assistant banner generator at parity</li>
+            <li>Add modern AI: text-to-image, brand-kit-aware generation, on-brand photo augmentation</li>
+            <li>Surface in NUNI editor as a primary content-block type (not buried)</li>
+            <li>Tier-gated: free for HVC, included in Standard+ plans</li>
+          </ul>
+        </div>
+        <div class="ic-section success">
+          <h4>Success state</h4>
+          <p>SMB customer creates a polished branded banner in 60 seconds, no design skills required. Agency generates per-client variants at scale. Mailchimp's AI story matches or exceeds Klaviyo/Brevo in 2026 reviews.</p>
+        </div>
+      </div>
+      <div class="from-to">
+        <div class="ft-state today">
+          <h5>Today (broken)</h5>
+          <ul>
+            <li>Creative Assistant gone</li>
+            <li>No text-to-image</li>
+            <li>Customer churns to Klaviyo for AI</li>
+            <li>Differentiation lost vs competitors</li>
+          </ul>
+        </div>
+        <div class="ft-arrow">→</div>
+        <div class="ft-state after">
+          <h5>After (fixed)</h5>
+          <ul>
+            <li>Creative Assistant restored + upgraded</li>
+            <li>Brand-kit-aware AI generation</li>
+            <li>Banner / photo / header in 60s</li>
+            <li>AI story leads industry</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ISSUE 10 -->
+  <div class="issue-card high">
+    <div class="ic-hd">
+      <span class="ic-num">10</span>
+      <h3>Mobile editor parity (edit on the go)</h3>
+      <span class="issue-pill high">High</span>
+      <span class="pill">Phase 2</span>
+    </div>
+    <div class="ic-bd">
+      <p class="ic-detail">
+        NUNI editor is unusable on mobile devices. Switch desktop-mobile popup can't be closed on Safari Desktop. Solo founders and SMB owners who work from mobile can't do quick edits.
+      </p>
+      <div class="ic-grid">
+        <div class="ic-section jtbd">
+          <h4>Customer JTBD</h4>
+          <p>"I want to edit my email on the go (iPad, phone) — quick fixes, last-minute reviews, approvals."</p>
+        </div>
+        <div class="ic-section barrier">
+          <h4>How it blocks them</h4>
+          <p>Solo founders and mobile-first marketers can't make quick edits. Approval workflows where someone needs to review on mobile break down.</p>
+          <blockquote class="issue-quote">"'Switch between desktop and mobile views' POPUP WINDOW CAN'T BE CLOSED ON SAFARI DESKTOP APP. ARE YOU EVER MAKING SURE THAT YOUR SERVICE WORKS ON ALL BROWSERS???"</blockquote>
+        </div>
+        <div class="ic-section solution">
+          <h4>Solution</h4>
+          <ul>
+            <li>Mobile-responsive editor (works on iPad and phone)</li>
+            <li>Fix the desktop-mobile popup blocker on Safari</li>
+            <li>Mobile-specific edit UI for common quick actions (text, image swap, send)</li>
+            <li>Native iOS/Android approval flow for review-only roles</li>
+          </ul>
+        </div>
+        <div class="ic-section success">
+          <h4>Success state</h4>
+          <p>Founder edits an email on iPad while traveling. Reviewer approves on phone in 60 seconds. Editor works on every browser including Safari.</p>
+        </div>
+      </div>
+      <div class="from-to">
+        <div class="ft-state today">
+          <h5>Today (broken)</h5>
+          <ul>
+            <li>NUNI unusable on mobile</li>
+            <li>Safari popup-blocker bug</li>
+            <li>No quick-edit mobile UI</li>
+          </ul>
+        </div>
+        <div class="ft-arrow">→</div>
+        <div class="ft-state after">
+          <h5>After (fixed)</h5>
+          <ul>
+            <li>Editor works on iPad + phone</li>
+            <li>Safari popup fixed</li>
+            <li>Mobile approval flow</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== PHASE 3 ====== -->
+  <div class="phase-divider" style="border-left-color: var(--danger);">
+    <h3>Phase 3 prerequisites — platform-tier investment (ship months 9-18)</h3>
+    <p>These unlock the hybrid + concierge migration for HVC + Legacy plan. Without them, $281M ARR HVC cohort cannot move at all.</p>
+  </div>
+
+  <!-- ISSUE 11 -->
+  <div class="issue-card med">
+    <div class="ic-hd">
+      <span class="ic-num">11</span>
+      <h3>Native HTML / code-edit mode in NUNI</h3>
+      <span class="issue-pill med">Platform</span>
+      <span class="pill">Phase 3</span>
+      <span class="pill">75 neg HTML + 65 v.neg HTML</span>
+    </div>
+    <div class="ic-bd">
+      <p class="ic-detail">
+        NUNI has no proper HTML / code-edit mode. Ctrl+K to insert links doesn't work in Firefox or Chrome. Users who need to paste HTML or edit code have to use Classic. Style rules are too rigid for unusual layouts.
+      </p>
+      <div class="ic-grid">
+        <div class="ic-section jtbd">
+          <h4>Customer JTBD</h4>
+          <p>"I want to paste in custom HTML/CSS for a unique layout, embed dynamic content from another tool, or troubleshoot rendering issues at the code level."</p>
+        </div>
+        <div class="ic-section barrier">
+          <h4>How it blocks them</h4>
+          <p>Code-savvy SMBs, agencies, and developers stay on NEA. Cannot use NUNI for any campaign that requires non-trivial HTML. This is the #1 blocker for the agency segment.</p>
+          <blockquote class="issue-quote">"I absolutely HATE that in the new builder Ctrl+K to insert links doesn't work on Firefox or Chrome. It's maddening! And I hate how the styling rules are so rigid now — I understand it's probably trying to streamline the process, but when I have something small I need to tweak to some unusual look..."</blockquote>
+        </div>
+        <div class="ic-section solution">
+          <h4>Solution</h4>
+          <ul>
+            <li>Native HTML view (toggle between WYSIWYG and code)</li>
+            <li>CSS injection support per email or per template</li>
+            <li>Ctrl+K and other keyboard shortcuts working in Firefox/Chrome</li>
+            <li>"Less restrictive styling" mode with override option</li>
+            <li>Custom merge tag support beyond standard</li>
+          </ul>
+        </div>
+        <div class="ic-section success">
+          <h4>Success state</h4>
+          <p>Developer pixel-tweaks email in code mode. Agency uses NUNI for all clients regardless of complexity. Custom merge tags work. Keyboard shortcuts work everywhere.</p>
+        </div>
+      </div>
+      <div class="from-to">
+        <div class="ft-state today">
+          <h5>Today (broken)</h5>
+          <ul>
+            <li>No native HTML view</li>
+            <li>Ctrl+K broken in Firefox/Chrome</li>
+            <li>Styling too rigid for tweaks</li>
+            <li>Code-savvy users locked into NEA</li>
+          </ul>
+        </div>
+        <div class="ft-arrow">→</div>
+        <div class="ft-state after">
+          <h5>After (fixed)</h5>
+          <ul>
+            <li>WYSIWYG ↔ Code toggle</li>
+            <li>Keyboard shortcuts work everywhere</li>
+            <li>CSS injection supported</li>
+            <li>Agencies can move to NUNI</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ISSUE 12 -->
+  <div class="issue-card med">
+    <div class="ic-hd">
+      <span class="ic-num">12</span>
+      <h3>RSS-driven campaign full feature parity</h3>
+      <span class="issue-pill med">Platform</span>
+      <span class="pill">Phase 3</span>
+      <span class="pill">14× HVC NEA usage vs NUNI</span>
+    </div>
+    <div class="ic-bd">
+      <p class="ic-detail">
+        NEA HVC users use RSS-driven campaigns at <span class="semibold">14× the rate</span> of NUNI HVC users (130K events vs 9.2K events in 90 days). The RSS workflow in NUNI is incomplete or buggy for advanced use cases. Publishers, podcasters, and content sites have no migration path.
+      </p>
+      <div class="ic-grid">
+        <div class="ic-section jtbd">
+          <h4>Customer JTBD</h4>
+          <p>"I publish blog content / podcast episodes / news, and want to automatically generate a recurring email digest from my RSS feed without manual work each time."</p>
+        </div>
+        <div class="ic-section barrier">
+          <h4>How it blocks them</h4>
+          <p>An entire ICP (publishers, content sites, podcasters) cannot move to NUNI without losing their core workflow. They will not migrate without this.</p>
+        </div>
+        <div class="ic-section solution">
+          <h4>Solution</h4>
+          <ul>
+            <li>Native RSS-driven campaign in NUNI with full feature parity to NEA</li>
+            <li>RSS preview — see what the next campaign will contain before it sends</li>
+            <li>Multi-feed merge support</li>
+            <li>Custom RSS-to-content-block mapping</li>
+            <li>Auto-thumbnail extraction from feed items</li>
+          </ul>
+        </div>
+        <div class="ic-section success">
+          <h4>Success state</h4>
+          <p>Publisher sets up an RSS-driven daily digest in NUNI in 10 minutes. Same delivery, rendering, and reliability as NEA. Multiple feeds in one digest.</p>
+        </div>
+      </div>
+      <div class="from-to">
+        <div class="ft-state today">
+          <h5>Today (broken)</h5>
+          <ul>
+            <li>RSS workflow incomplete in NUNI</li>
+            <li>Publishers stuck on NEA</li>
+            <li>14× usage gap shows it</li>
+          </ul>
+        </div>
+        <div class="ft-arrow">→</div>
+        <div class="ft-state after">
+          <h5>After (fixed)</h5>
+          <ul>
+            <li>Native RSS in NUNI at parity</li>
+            <li>Multi-feed support</li>
+            <li>Publishers migrate cleanly</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ISSUE 13 -->
+  <div class="issue-card med">
+    <div class="ic-hd">
+      <span class="ic-num">13</span>
+      <h3>Native content blocks: countdown / GIF / animation</h3>
+      <span class="issue-pill med">Platform</span>
+      <span class="pill">Phase 3</span>
+      <span class="pill">$7,150 MRR P0 escalation · 600K-recipient threat</span>
+    </div>
+    <div class="ic-bd">
+      <p class="ic-detail">
+        GIFs don't work properly in NUNI (won't fill the space, render inconsistently). No native countdown clock content block — a $7,150 MRR P0 escalation is tied to this. Customers threatening to move 600,000 recipients elsewhere over GIF support.
+      </p>
+      <div class="ic-grid">
+        <div class="ic-section jtbd">
+          <h4>Customer JTBD</h4>
+          <p>"I want to add visual urgency (countdown to a sale, animated promo) and dynamic visual elements (GIFs, animation) without needing third-party tools or code."</p>
+        </div>
+        <div class="ic-section barrier">
+          <h4>How it blocks them</h4>
+          <p>Ecommerce promo emails (BFCM, sales) need countdown timers. Animated GIFs are a core marketing visual format. Without them, customers go to Klaviyo, Stripo, or BEE.</p>
+          <blockquote class="issue-quote">"FIX HOW GIFS WORK IN THE NEW BUILDER!!! I despise that we have to use the Classic builder to get GIFs to work, fill the whole space. I'm about ready to take our 600k recipients elsewhere if you guys don't improve this."</blockquote>
+        </div>
+        <div class="ic-section solution">
+          <h4>Solution</h4>
+          <ul>
+            <li>Native countdown clock content block (timezone-aware, customizable styling)</li>
+            <li>GIF block that handles fill, sizing, fallback for Outlook</li>
+            <li>Lottie / animated SVG support for non-GIF animation</li>
+            <li>Animation library with on-brand templates</li>
+          </ul>
+        </div>
+        <div class="ic-section success">
+          <h4>Success state</h4>
+          <p>Marketer drops a countdown timer into a BFCM email in 30 seconds. GIF fills the space and renders correctly across all major clients including Outlook.</p>
+        </div>
+      </div>
+      <div class="from-to">
+        <div class="ft-state today">
+          <h5>Today (broken)</h5>
+          <ul>
+            <li>GIFs don't fill space</li>
+            <li>No countdown block</li>
+            <li>Customers leave for Klaviyo/Stripo</li>
+          </ul>
+        </div>
+        <div class="ft-arrow">→</div>
+        <div class="ft-state after">
+          <h5>After (fixed)</h5>
+          <ul>
+            <li>Native countdown clock</li>
+            <li>GIFs fill correctly + Outlook fallback</li>
+            <li>Animation library on-brand</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ISSUE 14 -->
+  <div class="issue-card med">
+    <div class="ic-hd">
+      <span class="ic-num">14</span>
+      <h3>Arbitrary sections (beyond Header / Body / Footer)</h3>
+      <span class="issue-pill med">Platform</span>
+      <span class="pill">Phase 3</span>
+      <span class="pill">$9,700 MRR P2 escalation</span>
+    </div>
+    <div class="ic-bd">
+      <p class="ic-detail">
+        NUNI restricts emails to three section types: Header, Body, Footer. Customers want to create arbitrary sections with their own backgrounds, padding, and content (e.g., a "Promo Banner" section with a background image and text overlay). This is the $9,700 MRR P2 escalation pattern. The "sections-only" model is the most-named layout restriction.
+      </p>
+      <div class="ic-grid">
+        <div class="ic-section jtbd">
+          <h4>Customer JTBD</h4>
+          <p>"I want to create distinct visual sections in my email (hero, promo, testimonials, footer) each with their own background image, styling, and layout."</p>
+        </div>
+        <div class="ic-section barrier">
+          <h4>How it blocks them</h4>
+          <p>Sophisticated newsletter design is impossible in NUNI. Designers can't create multi-section layouts that are standard in modern email design.</p>
+          <blockquote class="issue-quote">"Customer would like the ability in NUNI to add new sections. Right now they are limited to Header, Body, Footer. They want to add a background image to a particular section and have text overlayed on top (as well as a CTA)."</blockquote>
+        </div>
+        <div class="ic-section solution">
+          <h4>Solution</h4>
+          <ul>
+            <li>Allow arbitrary section creation (not limited to 3 types)</li>
+            <li>Per-section background image, padding, alignment</li>
+            <li>Section templates (hero, promo, testimonial, divider, etc.)</li>
+            <li>Section-level styling that doesn't bleed into siblings</li>
+          </ul>
+        </div>
+        <div class="ic-section success">
+          <h4>Success state</h4>
+          <p>Designer creates a 6-section newsletter (hero / promo / 2-column content / testimonials / CTA / footer) each with distinct branding. Matches the design vision pixel-for-pixel.</p>
+        </div>
+      </div>
+      <div class="from-to">
+        <div class="ft-state today">
+          <h5>Today (broken)</h5>
+          <ul>
+            <li>Only 3 section types allowed</li>
+            <li>No per-section background images</li>
+            <li>Multi-section newsletters impossible</li>
+          </ul>
+        </div>
+        <div class="ft-arrow">→</div>
+        <div class="ft-state after">
+          <h5>After (fixed)</h5>
+          <ul>
+            <li>Arbitrary section creation</li>
+            <li>Per-section bg + padding + alignment</li>
+            <li>Section template library</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== CROSS-CUTTING ====== -->
+  <div class="phase-divider" style="border-left-color: var(--danger);">
+    <h3>Cross-cutting — applies across all phases</h3>
+    <p>Migration tooling and rollback UX. These touch every customer migrating, regardless of phase.</p>
+  </div>
+
+  <!-- ISSUE 15 -->
+  <div class="issue-card med">
+    <div class="ic-hd">
+      <span class="ic-num">15</span>
+      <h3>NEA → NUNI template / journey migration tooling</h3>
+      <span class="issue-pill med">Cross-cutting</span>
+      <span class="pill">All phases</span>
+    </div>
+    <div class="ic-bd">
+      <p class="ic-detail">
+        Content created in NEA (campaigns, journeys, automations) cannot be auto-migrated to NUNI. Customers have to manually rebuild every campaign, every journey email, every saved template. This is the single biggest practical reason long-tenured customers won't move.
+      </p>
+      <div class="ic-grid">
+        <div class="ic-section jtbd">
+          <h4>Customer JTBD</h4>
+          <p>"I have years of saved templates, journeys, and active automations in NEA. I want to switch to NUNI without losing any of that work."</p>
+        </div>
+        <div class="ic-section barrier">
+          <h4>How it blocks them</h4>
+          <p>The cost of recreating their entire content library is paid by the customer, not by us. For a HVC with 200 templates and 15 journeys, that's weeks of work. They calculate the cost and decline to migrate.</p>
+          <blockquote class="issue-quote">"I wish there was an option to switch between builders in already existing content. We have a lot of content, such as journeys, that are made with the old/classic builder, and we would like to update it to a new design that has been made with the new builder. Right now that's not possible."</blockquote>
+        </div>
+        <div class="ic-section solution">
+          <h4>Solution</h4>
+          <ul>
+            <li>Bulk template migration tool (NEA template → NUNI template, preserve fidelity)</li>
+            <li>Journey/automation content migration that preserves email content per step</li>
+            <li>Side-by-side compare: see NEA template + NUNI rendered version before committing</li>
+            <li>Rollback if a migration loses fidelity</li>
+            <li>Run-by-account pre-migration audit report ("here's what will change")</li>
+          </ul>
+        </div>
+        <div class="ic-section success">
+          <h4>Success state</h4>
+          <p>Long-tenured customer migrates 200 templates and 15 journeys in one click. Reviews each, accepts or fixes. Done in an hour, not weeks. Trust restored.</p>
+        </div>
+      </div>
+      <div class="from-to">
+        <div class="ft-state today">
+          <h5>Today (broken)</h5>
+          <ul>
+            <li>No bulk migration tool</li>
+            <li>Journeys must be rebuilt by hand</li>
+            <li>Cost = weeks of customer work</li>
+            <li>HVCs decline to migrate</li>
+          </ul>
+        </div>
+        <div class="ft-arrow">→</div>
+        <div class="ft-state after">
+          <h5>After (fixed)</h5>
+          <ul>
+            <li>1-click bulk template migration</li>
+            <li>Journey content auto-ported per step</li>
+            <li>Side-by-side compare + rollback</li>
+            <li>Hours not weeks</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ISSUE 16 -->
+  <div class="issue-card crit">
+    <div class="ic-hd">
+      <span class="ic-num">16</span>
+      <h3>Forced-migration / "no way back" UX</h3>
+      <span class="issue-pill crit">Critical</span>
+      <span class="pill">All phases</span>
+      <span class="pill">369 New-vs-Legacy VOCs</span>
+    </div>
+    <div class="ic-bd">
+      <p class="ic-detail">
+        When customers were default-flipped to NUNI, the option to go back to NEA was hidden or removed from the main flow. Customers feel trapped. Direct churn-threat language: <span class="semibold">369 explicit New-vs-Legacy complaints</span> in our Qualtrics badge with the highest concentration of "I'm shopping providers" mentions.
+      </p>
+      <div class="ic-grid">
+        <div class="ic-section jtbd">
+          <h4>Customer JTBD</h4>
+          <p>"I want to try the new editor at my own pace, with the safety of being able to go back if it doesn't work for me."</p>
+        </div>
+        <div class="ic-section barrier">
+          <h4>How it blocks them</h4>
+          <p>Loss of control = loss of trust. Even customers who would have eventually migrated are now angry about how it happened. The 28.6% reverter rate among customers who tried both is a direct consequence of this lack of safety net.</p>
+          <blockquote class="issue-quote">"I want the older version of Mailchimp, legacy builder, back! I went on Google to get directions on how to change the default settings and it is not an option to change it anymore."</blockquote>
+        </div>
+        <div class="ic-section solution">
+          <h4>Solution</h4>
+          <ul>
+            <li>Always-available "switch back to classic" option for 60 days post-flip</li>
+            <li>Per-campaign editor choice (don't force a global flip)</li>
+            <li>Clear in-product communication about default changes (not silent)</li>
+            <li>Hybrid mode for accounts that have explicitly opted to stay on NEA</li>
+            <li>Reverter dashboard for support team to monitor health</li>
+          </ul>
+        </div>
+        <div class="ic-section success">
+          <h4>Success state</h4>
+          <p>Customer feels in control of their migration timing. Default-flip becomes a soft nudge, not a forced switch. Reverter rate drops to 5% or less. Trust in product changes restored.</p>
+        </div>
+      </div>
+      <div class="from-to">
+        <div class="ft-state today">
+          <h5>Today (broken)</h5>
+          <ul>
+            <li>"Switch back" option hidden</li>
+            <li>Global flip, no per-campaign choice</li>
+            <li>Silent default changes</li>
+            <li>Customers Google for workarounds</li>
+          </ul>
+        </div>
+        <div class="ft-arrow">→</div>
+        <div class="ft-state after">
+          <h5>After (fixed)</h5>
+          <ul>
+            <li>"Switch back" always available 60d</li>
+            <li>Per-campaign editor choice</li>
+            <li>Clear comms before changes</li>
+            <li>Hybrid mode for opt-in stayers</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary callout -->
+  <div class="callout info" style="margin-top: 24px;">
+    <div class="t">Reading this section as a roadmap input</div>
+    <p>The 16 issues above are organized by the migration phase that depends on them. Each Phase 1 issue is a Q1 ship-blocker; Phase 2 issues are Q2 commitments; Phase 3 issues are H2 platform investments. The cross-cutting items (15 + 16) should be in flight from day one because they affect every customer touched by any phase. <span class="semibold">Total estimated eng investment: a focused 3-quarter program for ~6-8 engineers across editor + brand kit + migration tooling teams.</span></p>
+  </div>
 </section>
 
 <hr style="margin: 48px 0;" />
